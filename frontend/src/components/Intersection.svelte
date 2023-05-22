@@ -1,16 +1,21 @@
 <script>
-	export let interH2 = "";
+	export let interLeft = "";
+	export let interRight = "";
 </script>
 
 
-<section>
-	<h2 class="intersection">{interH2}</h2>
+<section class="intersection">
+	<a href="#" class="intersection__left">{interLeft}</a>
+	<a href="#" class="intersection__right">{interRight}</a>
 </section>
 
 <style lang="scss">
 
 	.intersection {
-		margin: 30px 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		padding: 20px 0;
 	}
 
 </style>
