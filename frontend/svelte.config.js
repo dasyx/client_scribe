@@ -1,15 +1,17 @@
-// svelte.config.js
-
-import sveltePreprocess from "svelte-preprocess";
+import sveltePreprocess from 'svelte-preprocess';
+import postcssNesting from 'postcss-nesting';
 
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
-	preprocess: sveltePreprocess({ 
-		scss: {
-			prependData: '@use "../styles/variables.scss";'
-		} 
-	}),
+  preprocess: sveltePreprocess({
+    scss: {
+      prependData: '@use "../styles/variables.scss";',
+    },
+    postcss: {
+      plugins: [
+        postcssNesting(),
+      ],
+    },
+  }),
 };
 
 export default config;

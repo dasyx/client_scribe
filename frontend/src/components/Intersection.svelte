@@ -8,10 +8,9 @@
 </section>
 
 <style lang="scss">
+
 	.intersection {
 		margin: 30px 0;
 	}
-	.intersection h2 {
-		color: #fff;
-	}
+
 </style>
