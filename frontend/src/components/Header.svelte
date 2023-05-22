@@ -18,18 +18,17 @@
 		<div style:width="30px">
 			<IoMdHome  />
 		</div>
-		<span class="whitespace-nowrap text-xl font-semibold dark:text-white pl-2 pt-1"> Accueil </span>
+		<span class="whitespace-nowrap text-xl font-semibold dark:text-white pl-4 pt-1"> Scribe </span>
 	</NavBrand>
 	<NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
-		<NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Dropdown</Chevron></NavLi>
 		<NavLi href="/services">Services</NavLi>
-		<NavLi href="/pricing">Pricing</NavLi>
 		<NavLi href="/contact">Contact</NavLi>
+		<NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Navigation</Chevron></NavLi>
 		<Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
-			<DropdownItem>Dashboard</DropdownItem>
-			<DropdownItem>Settings</DropdownItem>
-			<DropdownItem>Earnings</DropdownItem>
+			<DropdownItem>S'inscrire</DropdownItem>
+			<DropdownItem>Se connecter</DropdownItem>
+			<DropdownItem>Tableau de bord</DropdownItem>
 			<DropdownDivider />
 			<DropdownItem>Sign out</DropdownItem>
 		</Dropdown>

@@ -1,17 +1,15 @@
-import preprocess from 'svelte-preprocess';
+// svelte.config.js
 
-/**  @type {import('@sveltejs/kit').Config} */
+import sveltePreprocess from "svelte-preprocess";
+
 const config = {
-	preprocess: [
-		preprocess({
-			scss: {
-				// code below will import theses files globally
-				prependData: `
-				@use "./src/styles/variables.scss";
-			`
-			},
-		})
-	],
+	// Consult https://github.com/sveltejs/svelte-preprocess
+	// for more information about preprocessors
+	preprocess: sveltePreprocess({ 
+		scss: {
+			prependData: '@use "../styles/variables.scss";'
+		} 
+	}),
 };
 
 export default config;
