@@ -1,5 +1,5 @@
 <script>
-	
+	import Banner from '../components/Banner.svelte';
 </script>
 
 <svelte:head>
@@ -7,10 +7,5 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-</section>
+<Banner background="url(../../src/images/wave_bg.webp)" title="Titre percutant" />
