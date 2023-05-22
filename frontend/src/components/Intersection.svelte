@@ -1,10 +1,10 @@
 <script>
-
+	export let interH2 = "";
 </script>
 
 
 <section>
-	<h2 class="intersection">Espace de connexion</h2>
+	<h2 class="intersection">{interH2}</h2>
 </section>
 
 <style lang="scss">

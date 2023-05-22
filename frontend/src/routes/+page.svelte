@@ -11,12 +11,15 @@
 
 <Banner 
 	background="url(../../src/images/wave_bg.webp)" 
-	titleH1="Scribe : Gérez vos factures et devis en toute simplicité"
+	bannerTitleH1="Scribe : Gérez vos factures et devis en toute simplicité"
+	height="smaller"
 />
 
-<Intersection />
+<Intersection 
+	interH2="Connectez-vous à nous"/>
 
 <Banner 
 	background="url(../../src/images/dawn-sky-bg.webp)" 
-	titleH2="Espace se connecter"
+	bannerTitleH2="Espace se connecter"
+	height="larger"
 />
