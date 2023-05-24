@@ -22,8 +22,8 @@
 	</NavBrand>
 	<NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
-		<NavLi href="/services">Services</NavLi>
-		<NavLi href="/contact">Contact</NavLi>
+		<!-- <NavLi href="/services">Services</NavLi>
+		<NavLi href="/contact">Contact</NavLi> -->
 		<NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Navigation</Chevron></NavLi>
 		<Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
 			<DropdownItem>S'inscrire</DropdownItem>
