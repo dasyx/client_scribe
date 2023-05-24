@@ -1,12 +1,12 @@
 <script>
-	export let interLeft = "";
-	export let interRight = "";
+	/* export let interLeft = "";
+	export let interRight = ""; */
 </script>
 
 
 <section class="intersection">
-	<a href="#" class="intersection__left">{interLeft}</a>
-	<a href="#" class="intersection__right">{interRight}</a>
+	<!-- <a class="intersection__left">{interLeft}</a>
+	<a class="intersection__right">{interRight}</a> -->
 </section>
 
 <style lang="scss">

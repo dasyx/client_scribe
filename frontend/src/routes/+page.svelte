@@ -9,15 +9,15 @@
 </svelte:head>
 
 <Banner
-	background="url(../../src/images/wave_bg.webp)"
+	background="url(../../images/wave_bg.webp)"
 	bannerTitleH1="Scribe : Gérez vos factures et devis en toute simplicité"
 	height="smaller"
 />
 
-<Intersection interLeft="Inscription" interRight="Déjà inscrit ?" />
+<!-- <Intersection interLeft="Inscription" interRight="Déjà inscrit ?" /> -->
 
 <Banner
-	background="url(../../src/images/dawn-sky-bg.webp)"
+	background="url(../../images/dawn-sky-bg.webp)"
 	bannerTitleH2="Veuillez remplir le formulaire ci-dessous."
 	height="larger"
 />
