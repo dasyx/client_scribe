@@ -1,5 +1,6 @@
 import sveltePreprocess from 'svelte-preprocess';
 import postcssNesting from 'postcss-nesting';
+import adapter from '@sveltejs/adapter-netlify';
 
 const config = {
   preprocess: sveltePreprocess({
@@ -11,6 +12,9 @@ const config = {
         postcssNesting(),
       ],
     },
+    kit: {
+      adapter: adapter()
+    }
   }),
 };
 
