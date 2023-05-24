@@ -1,6 +1,8 @@
 <script>
-	import Banner from '../components/Banner.svelte';
-	import Intersection from '../components/Intersection.svelte';
+import wave_bg from '../lib/images/wave_bg.webp';
+import dawn_bg from '../lib/images/dawn-sky-bg.webp';
+import Banner from '../components/Banner.svelte';
+import Intersection from '../components/Intersection.svelte';
 </script>
 
 <svelte:head>
@@ -9,15 +11,15 @@
 </svelte:head>
 
 <Banner
-	background="url(../../images/wave_bg.webp)"
-	bannerTitleH1="Scribe : Gérez vos factures et devis en toute simplicité"
-	height="smaller"
+  background={`url(${wave_bg})`}
+  bannerTitleH1="Scribe : Gérez vos factures et devis en toute simplicité"
+  height="smaller"
 />
 
 <!-- <Intersection interLeft="Inscription" interRight="Déjà inscrit ?" /> -->
 
 <Banner
-	background="url(../../images/dawn-sky-bg.webp)"
+background={`url(${dawn_bg})`}
 	bannerTitleH2="Veuillez remplir le formulaire ci-dessous."
 	height="larger"
 />

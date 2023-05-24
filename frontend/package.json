@@ -46,5 +46,6 @@
 		"flowbite-svelte": "^0.36.4",
 		"svelte-icons": "^2.1.0",
 		"sveltestrap": "^5.10.0"
-	}
+	},
+	"homepage": "/client_scribe"
 }

@@ -12,10 +12,13 @@ const config = {
         postcssNesting(),
       ],
     },
-    kit: {
-      adapter: adapter()
-    }
   }),
+  kit: {
+    adapter: adapter(),
+  },
+  vite: {
+    assetsInclude: ['**/*.webp'],
+  },
 };
 
 export default config;
