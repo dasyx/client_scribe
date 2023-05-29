@@ -16,7 +16,7 @@ async function testDatabaseConnection() {
   
     // Affichez les données récupérées dans la console
     console.log('Base de données en ligne !');
-    //console.log(data);
+    console.log(data);
   }
   
   // Appelez la fonction de test pour vérifier la connexion à la base de données

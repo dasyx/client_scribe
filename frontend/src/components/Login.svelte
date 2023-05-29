@@ -1,20 +1,20 @@
 <script>
 	import { supabase } from "$lib/supabaseClient";
+	import { v4 as uuidv4 } from 'uuid'; 
 
     let email = '';
     let password = '';
-    let confirmPassword = '';
-	let id = "";
 
     /**
 	 * @param {{ preventDefault: () => void; }} event
 	 */
     async function handleSubmit(event) {
         event.preventDefault();
-        if (password !== confirmPassword) {
+		const uuid = uuidv4();
+        /* if (password !== confirmPassword) {
             console.log("Les mots de passe ne correspondent pas.");
             return;
-        }
+        } */
         const { error } = await supabase.auth.signUp({
             email: email,
             password: password,
@@ -26,7 +26,7 @@
             const { data, error: insertError } = await supabase
                 .from('Utilisateurs')
                 .insert({
-                    id: id,
+                    id: uuid,
                     email: email,
                     cree_le: new Date().toISOString()
                 });
@@ -34,6 +34,7 @@
                 console.error(insertError.message);
             }
 			console.log(data)
+			console.log(uuid);
         }
     }
 </script>
@@ -64,7 +65,7 @@
         />
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label class="form-label" for="confirmPassword">Confirmer le mot de passe:</label>
         <input
             class="form-input"
@@ -74,7 +75,7 @@
             bind:value={confirmPassword}
             required
         />
-    </div>
+    </div> -->
     <button class="form-button" type="submit">Envoyer</button>
 </form>
 
