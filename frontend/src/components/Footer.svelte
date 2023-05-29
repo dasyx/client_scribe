@@ -1,11 +1,9 @@
-
 <footer>
-    <p class="test">Un texte pour test</p>
+	<p class="test">Un texte pour test</p>
 </footer>
 
 <style lang="scss">
-
-.test {
-    color: variables.$test;
-}
+	.test {
+		color: variables.$test;
+	}
 </style>

@@ -1,56 +1,83 @@
 <script>
-	let email = '';
-	let password = '';
-	let confirmPassword = '';
+	import { supabase } from "$lib/supabaseClient";
 
-	function handleSubmit() {
-		// Ajoutez votre logique de gestion de soumission ici
-		console.log('Email:', email);
-		console.log('Mot de passe:', password);
-		console.log('Confirmer le mot de passe:', confirmPassword);
-	}
+    let email = '';
+    let password = '';
+    let confirmPassword = '';
+	let id = "";
+
+    /**
+	 * @param {{ preventDefault: () => void; }} event
+	 */
+    async function handleSubmit(event) {
+        event.preventDefault();
+        if (password !== confirmPassword) {
+            console.log("Les mots de passe ne correspondent pas.");
+            return;
+        }
+        const { error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+        });
+        if (error) {
+            console.error(error.message);
+        } else {
+            // Enregistrement des données utilisateur dans la base de données
+            const { data, error: insertError } = await supabase
+                .from('Utilisateurs')
+                .insert({
+                    id: id,
+                    email: email,
+                    cree_le: new Date().toISOString()
+                });
+            if (insertError) {
+                console.error(insertError.message);
+            }
+			console.log(data)
+        }
+    }
 </script>
 
-
+<!-- Votre formulaire avec la logique de gestion de submit associée -->
 <form on:submit|preventDefault={handleSubmit}>
-	<div class="form-group">
-		<label class="form-label" for="email">Adresse email:</label>
-		<input
-			class="form-input"
-			type="email"
-			id="email"
-			placeholder="Entrez votre adresse email"
-			bind:value={email}
-			required
-		/>
-	</div>
+    <div class="form-group">
+        <label class="form-label" for="email">Adresse email:</label>
+        <input
+            class="form-input"
+            type="email"
+            id="email"
+            placeholder="Entrez votre adresse email"
+            bind:value={email}
+            required
+        />
+    </div>
 
-	<div class="form-group">
-		<label class="form-label" for="password">Mot de passe:</label>
-		<input
-			class="form-input"
-			type="password"
-			id="password"
-			placeholder="Entrez votre mot de passe"
-			bind:value={password}
-			required
-		/>
-	</div>
+    <div class="form-group">
+        <label class="form-label" for="password">Mot de passe:</label>
+        <input
+            class="form-input"
+            type="password"
+            id="password"
+            placeholder="Entrez votre mot de passe"
+            bind:value={password}
+            required
+        />
+    </div>
 
-	<div class="form-group">
-		<label class="form-label" for="confirmPassword">Confirmer le mot de passe:</label>
-		<input
-			class="form-input"
-			type="password"
-			id="confirmPassword"
-			placeholder="Répétez votre mot de passe"
-			bind:value={confirmPassword}
-			required
-		/>
-	</div>
-
-	<button class="form-button" type="submit">Envoyer</button>
+    <div class="form-group">
+        <label class="form-label" for="confirmPassword">Confirmer le mot de passe:</label>
+        <input
+            class="form-input"
+            type="password"
+            id="confirmPassword"
+            placeholder="Répétez votre mot de passe"
+            bind:value={confirmPassword}
+            required
+        />
+    </div>
+    <button class="form-button" type="submit">Envoyer</button>
 </form>
+
 
 <style>
 	.form-group {
