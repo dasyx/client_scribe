@@ -4,6 +4,7 @@
 
     let email = '';
     let password = '';
+    let confirmPassword = '';
 
     /**
 	 * @param {{ preventDefault: () => void; }} event
@@ -17,13 +18,13 @@
         } */
         const { error } = await supabase.auth.signUp({
             email: email,
-            password: password,
+            password: password
         });
         if (error) {
             console.error(error.message);
         } else {
             // Enregistrement des données utilisateur dans la base de données
-            const { data, error: insertError } = await supabase
+            const { error: insertError } = await supabase
                 .from('Utilisateurs')
                 .insert({
                     id: uuid,
@@ -32,9 +33,9 @@
                 });
             if (insertError) {
                 console.error(insertError.message);
+            } else {
+                console.log('Utilisateur enregistré !')
             }
-			console.log(data)
-			console.log(uuid);
         }
     }
 </script>
@@ -65,7 +66,7 @@
         />
     </div>
 
-    <!-- <div class="form-group">
+    <div class="form-group">
         <label class="form-label" for="confirmPassword">Confirmer le mot de passe:</label>
         <input
             class="form-input"
@@ -75,7 +76,7 @@
             bind:value={confirmPassword}
             required
         />
-    </div> -->
+    </div>
     <button class="form-button" type="submit">Envoyer</button>
 </form>
 
