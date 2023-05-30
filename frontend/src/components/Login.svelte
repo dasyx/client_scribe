@@ -1,11 +1,16 @@
 <script>
     import { supabase } from "$lib/supabaseClient";
     import { v4 as uuidv4 } from 'uuid';
+    import { onMount } from 'svelte';
 
     let email = '';
     let password = '';
     let confirmPassword = '';
-
+    /**
+	 * @type {HTMLParagraphElement}
+	 */
+    let formMsg;
+    let formMsgText = '';
     /**
 	 * @param {{ preventDefault: () => void; }} event
 	 */
@@ -51,7 +56,10 @@
         if (error) throw error
 
         if (userExists) {
-            throw new Error('Un utilisateur existe déjà avec cet e-mail')
+            /* l'instruction suivante sera affichée seulement dans la console */
+            /* throw new Error('Un utilisateur existe déjà avec cet e-mail') */
+            /* la suivante sera affichée dans la page */
+            formMsgText = "Utilisateur déjà dans la base de données"
         } else {
             // @ts-ignore
             const { user, error } = await supabase.auth.signUp({ email, password })
@@ -60,6 +68,12 @@
             return user
         }
     }
+
+    onMount(() => {
+    // Vous pouvez accéder aux propriétés et méthodes de l'élément ici
+    // @ts-ignore
+    console.log(formMsgText); // Affiche la valeur de l'input
+    })
 </script>
 
 
@@ -101,6 +115,8 @@
         />
     </div>
     <button class="form-button" type="submit">Envoyer</button>
+    <!--message d'alerte selon gestion formulaire-->
+    <p bind:this={formMsg} id="form-msg">{formMsgText}</p>
 </form>
 
 
