@@ -1,6 +1,6 @@
 <script>
-	import { supabase } from "$lib/supabaseClient";
-	import { v4 as uuidv4 } from 'uuid'; 
+    import { supabase } from "$lib/supabaseClient";
+    import { v4 as uuidv4 } from 'uuid';
 
     let email = '';
     let password = '';
@@ -11,18 +11,10 @@
 	 */
     async function handleSubmit(event) {
         event.preventDefault();
-		const uuid = uuidv4();
-        /* if (password !== confirmPassword) {
-            console.log("Les mots de passe ne correspondent pas.");
-            return;
-        } */
-        const { error } = await supabase.auth.signUp({
-            email: email,
-            password: password
-        });
-        if (error) {
-            console.error(error.message);
-        } else {
+        const uuid = uuidv4();
+
+        try {
+            await createUser(email, password);
             // Enregistrement des données utilisateur dans la base de données
             const { error: insertError } = await supabase
                 .from('Utilisateurs')
@@ -36,9 +28,40 @@
             } else {
                 console.log('Utilisateur enregistré !')
             }
+        } catch (error) {
+            // @ts-ignore
+            console.error(error.message);
+        }
+    }
+
+    /**
+	 * @param {string} email
+	 * @param {string} password
+	 */
+    async function createUser(email, password) {
+        console.log("email : ", email);
+        console.log("password : ", password);
+
+        const { data: userExists, error } = await supabase
+            .from('Utilisateurs')
+            .select('id')
+            .eq('email', email)
+            .maybeSingle()
+
+        if (error) throw error
+
+        if (userExists) {
+            throw new Error('Un utilisateur existe déjà avec cet e-mail')
+        } else {
+            // @ts-ignore
+            const { user, error } = await supabase.auth.signUp({ email, password })
+            if (error) throw error
+
+            return user
         }
     }
 </script>
+
 
 <!-- Votre formulaire avec la logique de gestion de submit associée -->
 <form on:submit|preventDefault={handleSubmit}>
