@@ -13,12 +13,12 @@
     import IoMdHome from 'svelte-icons/io/IoMdHome.svelte';
     import { goto } from '$app/navigation';
     import { supabase } from '$lib/supabaseClient';
-    import { onMount } from 'svelte';
-	import { error } from '@sveltejs/kit';
+    /* import { onMount } from 'svelte';
+	import { error } from '@sveltejs/kit'; */
 	import { userLoggedIn } from '$lib/store.js';
 
 
-    onMount(async () => {
+    /* onMount(async () => {
         try {
             const {
                 data: { user }
@@ -38,7 +38,7 @@
         } catch (err) {
             console.error(err);
         }
-    });
+    }); */
 
     const redirectToMainPage = () => {
         goto('/signin');
@@ -67,14 +67,19 @@
     <NavUl {hidden}>
         <NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Navigation</Chevron></NavLi>
         <Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
+            {#if $userLoggedIn === true}
+            <DropdownItem>Mon compte</DropdownItem>
+            <DropdownItem>Tableau de bord</DropdownItem>
+            {:else}
             <DropdownItem>S'inscrire</DropdownItem>
+            {/if}
+            <DropdownItem>Paramètres</DropdownItem>
+            <DropdownDivider />
             {#if $userLoggedIn === true}
                 <DropdownItem on:click={handleSignOut}>Se déconnecter</DropdownItem>
             {:else}
                 <DropdownItem on:click={redirectToMainPage}>Se connecter</DropdownItem>
             {/if}
-            <DropdownDivider />
-            <DropdownItem>Tableau de bord</DropdownItem>
         </Dropdown>
     </NavUl>
 </Navbar>

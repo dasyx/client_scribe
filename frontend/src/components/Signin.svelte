@@ -65,13 +65,27 @@
 </form>
 
 <style>
+
+	form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 70%;
+		margin: 0 auto;
+		margin-top: 50px;
+		padding: 20px;
+		border-radius: 5px;
+		background: linear-gradient(to bottom, #0F2E3D, #22556D, #36978D, #4EB8AD, #65D9CD, #7DFAED);
+
+	}
 	.form-group {
 		margin-bottom: 1rem;
 	}
 
 	.form-label {
 		font-weight: bold;
-		margin-bottom: 0.5rem;
+		color: #fff;
 	}
 
 	.form-input {
@@ -84,10 +98,11 @@
 	}
 
 	.form-button {
+		margin-top: 20px;
 		padding: 0.5rem 1rem;
 		font-size: 1rem;
 		border-radius: 4px;
-		background-color: #007bff;
+		background-color: #0F2E3D;
 		color: #fff;
 		border: none;
 		cursor: pointer;
@@ -97,6 +112,12 @@
 		color: #000;
 	}
 
+	label[for="email"],
+	label[for="password"] {
+		padding: 0.5rem 0;
+	}
+
+
 	/* Flexbox styles */
 	.form-group {
 		display: flex;
@@ -105,6 +126,10 @@
 
 	@media (min-width: 576px) {
 		/* Small devices (phones) */
+
+		form {
+			width: 60%;
+		}
 
 		.form-label {
 			margin-bottom: 0;
@@ -118,15 +143,18 @@
 
 	@media (min-width: 768px) {
 		/* Medium devices (tablets) */
+		form {
+			width: 45%;
+		}
 		.form-input {
-			width: 400px;
+			width: 300px;
 		}
 	}
 
 	@media (min-width: 992px) {
 		/* Large devices (desktops) */
 		.form-input {
-			width: 400px;
+			width: 350px;
 		}
 	}
 </style>

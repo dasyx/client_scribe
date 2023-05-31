@@ -17,7 +17,7 @@
 	height="smaller"
 />
 
-<!-- <Intersection interLeft="Inscription" interRight="Déjà inscrit ?" /> -->
+ <Intersection interLeft="Inscription" interRight="Déjà inscrit ?" />
 
 <Banner
 	background={`url(${dawn_bg})`}
