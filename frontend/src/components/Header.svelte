@@ -11,8 +11,13 @@
 		DropdownDivider
 	} from 'flowbite-svelte';
 	import IoMdHome from 'svelte-icons/io/IoMdHome.svelte';
+	import { goto } from '$app/navigation';
 
 	let userLoggedIn = false;
+
+	const redirectToFakeLink = () => {
+         goto('/signin');
+    }
 </script>
 
 <Navbar let:hidden let:toggle>
@@ -32,7 +37,7 @@
 			{#if userLoggedIn}
 			  <DropdownItem>Se déconnecter</DropdownItem>
 			{:else}
-			  <DropdownItem>Se connecter</DropdownItem>
+			  <DropdownItem on:click={redirectToFakeLink}>Se connecter</DropdownItem>
 			{/if}
 			<DropdownDivider />
 			<DropdownItem>Tableau de bord</DropdownItem>

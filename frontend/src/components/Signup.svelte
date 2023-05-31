@@ -1,7 +1,6 @@
 <script>
 	import { supabase } from '$lib/supabaseClient';
 	import { v4 as uuidv4 } from 'uuid';
-	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 
 	let email = '';
