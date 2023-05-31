@@ -11,6 +11,8 @@
 		DropdownDivider
 	} from 'flowbite-svelte';
 	import IoMdHome from 'svelte-icons/io/IoMdHome.svelte';
+
+	let userLoggedIn = false;
 </script>
 
 <Navbar let:hidden let:toggle>
@@ -27,10 +29,14 @@
 		<NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Navigation</Chevron></NavLi>
 		<Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
 			<DropdownItem>S'inscrire</DropdownItem>
-			<DropdownItem>Se connecter</DropdownItem>
-			<DropdownItem>Tableau de bord</DropdownItem>
+			{#if userLoggedIn}
+			  <DropdownItem>Se déconnecter</DropdownItem>
+			{:else}
+			  <DropdownItem>Se connecter</DropdownItem>
+			{/if}
 			<DropdownDivider />
-			<DropdownItem>Sign out</DropdownItem>
-		</Dropdown>
+			<DropdownItem>Tableau de bord</DropdownItem>
+		  </Dropdown>
+		  
 	</NavUl>
 </Navbar>
