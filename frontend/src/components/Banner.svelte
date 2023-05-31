@@ -1,5 +1,5 @@
 <script>
-	import Login from "./Login.svelte";
+	import Signup from "./Signup.svelte";
 	export let background = 'url(chemin_vers_l_image)';
 	export let bannerTitleH1 = '';
 	export let bannerTitleH2 = '';
@@ -16,7 +16,7 @@
 		<h1>{bannerTitleH1}</h1>
 	{:else}
 		<h2>{bannerTitleH2}</h2>
-		<Login />
+		<Signup />
 	{/if}
 
 </section>
