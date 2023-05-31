@@ -3,6 +3,7 @@
 
 	import { supabase } from '$lib/supabaseClient';
 	import { goto } from '$app/navigation';
+	import { userLoggedIn } from '$lib/store.js';
 
 	let email = '';
 	let password = '';
@@ -26,6 +27,7 @@
 		if (error) {
 			alert(error.message); // Afficher une alerte si une erreur se produit
 		} else {
+			userLoggedIn.set(true);
 			goto('/main'); // Rediriger l'utilisateur vers la page de profil
 		}
 	}

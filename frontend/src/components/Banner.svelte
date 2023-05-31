@@ -54,10 +54,11 @@
 	} */
 
 	.banner h1 {
-		font-size: 30px; /* Ajustez la taille de police selon vos besoins */
+		font-size: 1.5rem; /* Ajustez la taille de police selon vos besoins */
 		text-align: center;
 		position: relative;
 		z-index: 1; /* Assurez-vous que le titre est au-dessus de l'arrière-plan flou */
+		padding: 0 10px;
 	}
 
 	.banner h2 {
