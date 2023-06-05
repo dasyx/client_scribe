@@ -27,7 +27,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 100%; /* Utilisation de 100% de la largeur de la page */
+		width: 100%; 
 		background-image: var(--background);
 		background-size: cover;
 		color: #fff;
@@ -40,24 +40,11 @@
 		}
 	}
 
-	/* .banner::before {
-    	content: '';
-    	position: absolute;
-    	top: 0;
-    	left: 0;
-    	right: 0;
-    	bottom: 0;
-    	background-image: var(--background);
-    	background-size: cover;
-    	filter: blur(8px);
-    	opacity: 0.8; 
-	} */
-
 	.banner h1 {
-		font-size: 1.5rem; /* Ajustez la taille de police selon vos besoins */
+		font-size: 1.5rem; 
 		text-align: center;
 		position: relative;
-		z-index: 1; /* Assurez-vous que le titre est au-dessus de l'arrière-plan flou */
+		z-index: 1; 
 		padding: 0 10px;
 	}
 

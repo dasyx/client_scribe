@@ -1,9 +1,10 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import { supabase } from '$lib/supabaseClient';
 	import { goto } from '$app/navigation';
 	import { userLoggedIn } from '$lib/store.js';
+	import IoIosArrowDropdown from 'svelte-icons/io/IoIosArrowDropdown.svelte'
 
 	let email = '';
 	let password = '';
@@ -34,6 +35,15 @@
 </script>
 
 <!-- Votre formulaire avec la logique de gestion de submit associée -->
+<div class="form-title">
+	<span style:width="30px">
+		<IoIosArrowDropdown />
+	</span>
+	<h1>Connectez-vous pour continuer</h1>
+	<span style:width="30px">
+		<IoIosArrowDropdown />
+	</span>
+</div>
 <form on:submit|preventDefault={handleSubmit}>
 	<div class="form-group">
 		<label class="form-label" for="email">Adresse email:</label>
@@ -47,7 +57,7 @@
 		/>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group"> 
 		<label class="form-label" for="password">Mot de passe:</label>
 		<input
 			class="form-input"
@@ -64,21 +74,36 @@
 	<p bind:this={formMsg} id="form-msg">{formMsgText}</p>
 </form>
 
-<style>
-
+<style lang="scss">
 	form {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		width: 70%;
+		height: 30rem;
 		margin: 0 auto;
-		margin-top: 50px;
+		margin-top: 100px;
 		padding: 20px;
 		border-radius: 5px;
-		background: linear-gradient(to bottom, #0F2E3D, #22556D, #36978D, #4EB8AD, #65D9CD, #7DFAED);
-
+		background: variables.$form-gradient, 20%;
 	}
+
+	.form-title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 100px;
+		padding: 10px;
+		background-color: #fff;
+	}
+
+	.form-title h1 {
+		text-align: center;
+		font-size: 1.7rem;
+		color: #0f2e3d;
+	}
+
 	.form-group {
 		margin-bottom: 1rem;
 	}
@@ -98,11 +123,11 @@
 	}
 
 	.form-button {
-		margin-top: 20px;
+		margin-top: 40px;
 		padding: 0.5rem 1rem;
 		font-size: 1rem;
 		border-radius: 4px;
-		background-color: #0F2E3D;
+		background-color: #0f2e3d;
 		color: #fff;
 		border: none;
 		cursor: pointer;
@@ -112,16 +137,21 @@
 		color: #000;
 	}
 
-	label[for="email"],
-	label[for="password"] {
-		padding: 0.5rem 0;
+	label[for='email'],
+	label[for='password'] {
+		padding: 1.2rem 0;
 	}
-
 
 	/* Flexbox styles */
 	.form-group {
 		display: flex;
 		flex-direction: column;
+	}
+
+	@media (min-width: 320px) and (max-width: 575px) {
+		form {
+			width: 95%;
+		}
 	}
 
 	@media (min-width: 576px) {
@@ -144,7 +174,7 @@
 	@media (min-width: 768px) {
 		/* Medium devices (tablets) */
 		form {
-			width: 45%;
+			width: 50%;
 		}
 		.form-input {
 			width: 300px;
@@ -153,8 +183,42 @@
 
 	@media (min-width: 992px) {
 		/* Large devices (desktops) */
+
+		form {
+			width: 38%;
+		}
 		.form-input {
 			width: 350px;
 		}
+		.form-title h1 {
+			width: 25%;
+		}
+
 	}
+
+	@media (min-width: 1140px) {
+		/* Large devices (desktops) */
+
+		form {
+			width: 30%;
+		}
+	}
+
+	@media (min-width: 1260px) {
+		/* Large devices (desktops) */
+
+		form {
+			width: 35%;
+		}
+	}
+
+	@media (min-width: 1440px) {
+		/* Large devices (desktops) */
+
+		form {
+			width: 25%;
+		}
+
+	}
+
 </style>
