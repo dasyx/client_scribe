@@ -40,8 +40,16 @@
         }
     }); */
 
-    const redirectToMainPage = () => {
+    const redirectToSigninPage = () => {
         goto('/signin');
+    };
+
+    const redirectToAccount = () => {
+        goto('/account');
+    };
+
+    const redirectToMainPage = () => {
+        goto('/main');
     };
 
     async function handleSignOut() {
@@ -68,8 +76,8 @@
         <NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Navigation</Chevron></NavLi>
         <Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
             {#if $userLoggedIn === true}
-            <DropdownItem>Mon compte</DropdownItem>
-            <DropdownItem>Tableau de bord</DropdownItem>
+            <DropdownItem on:click={redirectToAccount}>Mon compte</DropdownItem>
+            <DropdownItem on:click={redirectToMainPage}>Tableau de bord</DropdownItem>
             {:else}
             <DropdownItem>S'inscrire</DropdownItem>
             {/if}
@@ -78,7 +86,7 @@
             {#if $userLoggedIn === true}
                 <DropdownItem on:click={handleSignOut}>Se déconnecter</DropdownItem>
             {:else}
-                <DropdownItem on:click={redirectToMainPage}>Se connecter</DropdownItem>
+                <DropdownItem on:click={redirectToSigninPage}>Se connecter</DropdownItem>
             {/if}
         </Dropdown>
     </NavUl>
