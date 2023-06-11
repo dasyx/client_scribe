@@ -13,12 +13,12 @@
     import IoMdHome from 'svelte-icons/io/IoMdHome.svelte';
     import { goto } from '$app/navigation';
     import { supabase } from '$lib/supabaseClient';
-    /* import { onMount } from 'svelte';
-	import { error } from '@sveltejs/kit'; */
+	import { error } from '@sveltejs/kit';
 	import { userLoggedIn } from '$lib/store.js';
+	import { onMount } from 'svelte';
 
 
-    /* onMount(async () => {
+    onMount(async () => {
         try {
             const {
                 data: { user }
@@ -38,7 +38,7 @@
         } catch (err) {
             console.error(err);
         }
-    }); */
+    });
 
     const redirectToSigninPage = () => {
         goto('/signin');
@@ -75,7 +75,7 @@
     <NavUl {hidden}>
         <NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Navigation</Chevron></NavLi>
         <Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
-            {#if $userLoggedIn === true}
+            {#if $userLoggedIn == true}
             <DropdownItem on:click={redirectToAccount}>Mon compte</DropdownItem>
             <DropdownItem on:click={redirectToMainPage}>Tableau de bord</DropdownItem>
             {:else}
@@ -83,7 +83,7 @@
             {/if}
             <DropdownItem>Paramètres</DropdownItem>
             <DropdownDivider />
-            {#if $userLoggedIn === true}
+            {#if $userLoggedIn == true}
                 <DropdownItem on:click={handleSignOut}>Se déconnecter</DropdownItem>
             {:else}
                 <DropdownItem on:click={redirectToSigninPage}>Se connecter</DropdownItem>

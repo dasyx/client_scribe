@@ -20,6 +20,7 @@
 
 		try {
 			await createUser(email, password);
+
 			// Enregistrement des données utilisateur dans la base de données
 			const { error: insertError } = await supabase.from('Utilisateurs').insert({
 				id: uuid,
@@ -64,7 +65,7 @@
 			const { user, error } = await supabase.auth.signUp({ email, password });
 			if (error) throw error;
 			/* return console.log(email, password); */
-            goto('/main')
+			goto('/main');
 		}
 	}
 </script>
