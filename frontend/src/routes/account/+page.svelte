@@ -1,52 +1,61 @@
 <script>
 	import { supabase } from '$lib/supabaseClient';
-	import { user } from '$lib/store';
+	import { v4 as uuidv4 } from 'uuid';
+	//import { onMount } from 'svelte';
 
 	let email = '';
 	let password = '';
-	let confirmPassword = '';
-	// @ts-ignore
+	//let id = '';
 	let firstName = '';
 	let lastName = '';
-	/**
-	 * @type {HTMLParagraphElement}
-	 */
+
+/* 	onMount(async () => {
+		try {
+			// @ts-ignore
+			const { user, error } = await supabase.auth.getUser();
+
+			if (error) {
+				throw new Error(
+					`Erreur lors de la récupération des informations utilisateur: ${error.message}`
+				);
+			} else if (user) {
+				email = user.email;
+				id = user.id;
+				console.log(user.email);
+				console.log(user.id);
+
+				const { data, error } = await supabase.from('Utilisateurs').select('*').eq('id', user.id);
+
+				if (error) {
+					throw new Error(
+						`Erreur lors de la récupération des informations utilisateur: ${error.message}`
+					);
+				} else if (data && data.length > 0) {
+					firstName = data[0].prenom;
+					lastName = data[0].nom;
+				}
+			}
+		} catch (err) {
+			console.error(err);
+		}
+	}); */
 
 	/**
 	 * @param {{ preventDefault: () => void; }} event
 	 */
 	async function handleSubmit(event) {
 		event.preventDefault();
+		//const uuid = uuidv4();
 
 		try {
-			await updateUser(email, lastName, firstName);
-
-			// vérifie si l'utilisateur existe déjà
-
-			/* const { data: users, error } = await supabase
-				.from('Utilisateurs')
-				.select('id')
-				.eq('email', email);
-
-			if (error) {
-				console.error(error);
-				return;
-			}
-
-			if (users.length > 0) {
-				// L'utilisateur existe déjà
-				alert('Cet e-mail est déjà utilisé. Veuillez en saisir un autre.');
-				return;
-			} */
-
 			const { error: insertError } = await supabase
 				.from('Utilisateurs')
 				.update({
-					email: email,
-					nom: lastName,
-					prenom: firstName
+					prenom: firstName,
+					nom: lastName
 				})
 				.eq('email', email);
+
 			if (insertError) {
 				console.error(insertError.message);
 			} else {
@@ -56,22 +65,6 @@
 			// @ts-ignore
 			console.error(error.message);
 		}
-	}
-
-	/**
-	 * @param {string} email
-	 * @param {string} nom
-	 * @param {any} prenom
-	 */
-	async function updateUser(email, nom, prenom) {
-		console.log('nom : ', nom);
-		console.log('prenom : ', prenom);
-
-		const { error } = await supabase
-			.from('Utilisateurs')
-			.update({ nom, prenom })
-			.eq('email', email);
-		if (error) throw error;
 	}
 </script>
 
@@ -96,17 +89,6 @@
 			id="password"
 			placeholder="Entrez votre mot de passe"
 			bind:value={password}
-		/>
-	</div>
-
-	<div class="form-group">
-		<label class="form-label" for="confirmPassword">Confirmer le mot de passe:</label>
-		<input
-			class="form-input"
-			type="password"
-			id="confirmPassword"
-			placeholder="Répétez votre mot de passe"
-			bind:value={confirmPassword}
 		/>
 	</div>
 
