@@ -14,19 +14,7 @@
     import { goto } from '$app/navigation';
     import { supabase } from '$lib/supabaseClient';
     import { userLoggedIn } from '$lib/store.js';
-    import { onMount } from 'svelte';
-
-
-    onMount(async () => {
-        try {
-            const {
-                data: { user }
-            } = await supabase.auth.getUser();
-
-        } catch (err) {
-            console.error(err);
-        }
-    });
+    
 
     const redirectToSigninPage = () => {
         goto('/signin');
