@@ -1,63 +1,65 @@
 <script>
+	// @ts-nocheck
+
 	import { supabase } from '$lib/supabaseClient';
-	import { v4 as uuidv4 } from 'uuid';
-	//import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
+	//import { v4 } from 'uuid';
 
 	let email = '';
 	let password = '';
-	//let id = '';
 	let firstName = '';
 	let lastName = '';
+	let id = '';
 
-/* 	onMount(async () => {
+	onMount(async () => {
 		try {
-			// @ts-ignore
-			const { user, error } = await supabase.auth.getUser();
+			const {
+				data: { user }
+			} = await supabase.auth.getUser();
 
-			if (error) {
-				throw new Error(
-					`Erreur lors de la récupération des informations utilisateur: ${error.message}`
-				);
-			} else if (user) {
-				email = user.email;
-				id = user.id;
-				console.log(user.email);
-				console.log(user.id);
+			email = user.email;
+			id = user.id;
+			
+			console.log(user.email);
+			console.log(user.id);
 
+			//display an object with all user data
+			console.log('user', user)
+
+			if (user) {
 				const { data, error } = await supabase.from('Utilisateurs').select('*').eq('id', user.id);
 
 				if (error) {
 					throw new Error(
 						`Erreur lors de la récupération des informations utilisateur: ${error.message}`
 					);
-				} else if (data && data.length > 0) {
-					firstName = data[0].prenom;
-					lastName = data[0].nom;
 				}
 			}
 		} catch (err) {
 			console.error(err);
 		}
-	}); */
+	});
 
 	/**
 	 * @param {{ preventDefault: () => void; }} event
 	 */
 	async function handleSubmit(event) {
 		event.preventDefault();
-		//const uuid = uuidv4();
+		//const uuid = v4();
 
 		try {
-			const { error: insertError } = await supabase
+
+			const { error: updateError } = await supabase
 				.from('Utilisateurs')
 				.update({
 					prenom: firstName,
-					nom: lastName
+					nom: lastName,
+					email: email,
 				})
 				.eq('email', email);
 
-			if (insertError) {
-				console.error(insertError.message);
+			if (updateError) {
+				console.error(updateError.message);
 			} else {
 				console.log('Utilisateur modifié !');
 			}
@@ -70,8 +72,30 @@
 
 <!-- Votre formulaire avec la logique de gestion de submit associée -->
 <form on:submit|preventDefault={handleSubmit}>
+	<!-- <div class="form-group">
+		<label class="form-label" for="currentEmail">Adresse email actuelle:</label>
+		<input
+			class="form-input"
+			type="email"
+			id="currentEmail"
+			placeholder="Entrez votre adresse email"
+			bind:value={email}
+		/>
+	</div>
+
 	<div class="form-group">
-		<label class="form-label" for="email">Adresse email:</label>
+		<label class="form-label" for="newEmail">Nouvelle adresse email:</label>
+		<input
+			class="form-input"
+			type="email"
+			id="newEmail"
+			placeholder="Entrez votre adresse email"
+			bind:value={newEmail}
+		/>
+	</div> -->
+
+	<div class="form-group">
+		<label class="form-label" for="newEmail">Adresse email:</label>
 		<input
 			class="form-input"
 			type="email"

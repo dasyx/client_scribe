@@ -1,17 +1,22 @@
 <script>
 	import { onMount } from 'svelte';
+	import { userLoggedIn } from '$lib/store.js';
 	import { supabase } from '$lib/supabaseClient';
 
-	let user = "";
 	let email = '';
-	// @ts-ignore
-	let id = user.id;
-
+	let id = '';
+	
 	onMount(async () => {
 		try {
 			const {
 				data: { user }
 			} = await supabase.auth.getUser();
+
+			if (user) {
+                $userLoggedIn = true;
+            } else {
+                $userLoggedIn = false;
+            }
 
 			// @ts-ignore
 			email = user.email;

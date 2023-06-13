@@ -13,9 +13,8 @@
     import IoMdHome from 'svelte-icons/io/IoMdHome.svelte';
     import { goto } from '$app/navigation';
     import { supabase } from '$lib/supabaseClient';
-	import { error } from '@sveltejs/kit';
-	import { userLoggedIn } from '$lib/store.js';
-	import { onMount } from 'svelte';
+    import { userLoggedIn } from '$lib/store.js';
+    import { onMount } from 'svelte';
 
 
     onMount(async () => {
@@ -24,17 +23,6 @@
                 data: { user }
             } = await supabase.auth.getUser();
 
-            if (user) {
-                $userLoggedIn = true;
-            } else {
-                $userLoggedIn = false;
-            }
-
-            if (error) {
-                throw new Error(
-                    `Erreur lors de la récupération des informations utilisateur: ${error}`
-                );
-            }
         } catch (err) {
             console.error(err);
         }
@@ -53,16 +41,16 @@
     };
 
     async function handleSignOut() {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-        console.error('Erreur lors de la déconnexion', error);
-    } else {
-		userLoggedIn.set(false);
-        goto('/');
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            console.error('Erreur lors de la déconnexion', error);
+        } else {
+            userLoggedIn.set(false);
+            goto('/');
+        }
     }
-}
-
 </script>
+
 
 <Navbar let:hidden let:toggle>
     <NavBrand href="/">
