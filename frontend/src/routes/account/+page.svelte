@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
-
 	import { supabase } from '$lib/supabaseClient';
+	import { userLoggedIn } from '$lib/store.js';
 	import { onMount } from 'svelte';
 	//import { v4 } from 'uuid';
 
@@ -17,14 +17,20 @@
 				data: { user }
 			} = await supabase.auth.getUser();
 
+			if (user) {
+                $userLoggedIn = true;
+            } else {
+                $userLoggedIn = false;
+            }
+
 			email = user.email;
 			id = user.id;
-			
+
 			console.log(user.email);
 			console.log(user.id);
 
 			//display an object with all user data
-			console.log('user', user)
+			console.log('user', user);
 
 			if (user) {
 				const { data, error } = await supabase.from('Utilisateurs').select('*').eq('id', user.id);
@@ -48,13 +54,12 @@
 		//const uuid = v4();
 
 		try {
-
 			const { error: updateError } = await supabase
 				.from('Utilisateurs')
 				.update({
 					prenom: firstName,
 					nom: lastName,
-					email: email,
+					email: email
 				})
 				.eq('email', email);
 
@@ -66,6 +71,15 @@
 		} catch (error) {
 			// @ts-ignore
 			console.error(error.message);
+		}
+	}
+	async function deleteAccount() {
+		try {
+			const { error } = await supabase.auth.deleteUser('d27ae5d7-b996-4aaa-9cfa-9fb51238dd3c');
+			if (error) throw error;
+			alert('Votre compte a été supprimé');
+		} catch (error) {
+			alert(error.error_description || error.message);
 		}
 	}
 </script>
@@ -137,7 +151,9 @@
 			bind:value={lastName}
 		/>
 	</div>
-	<button class="form-button" type="submit">Envoyer</button>
+	<button class="form-button" type="submit">Mettre à jour les informations</button>
+	<button on:click={deleteAccount} class="form-button-del" type="submit">Supprimer le compte</button
+	>
 	<!--message d'alerte selon gestion formulaire-->
 	<!-- <p bind:this={formMsg} id="form-msg">{formMsgText}</p> -->
 </form>
@@ -161,14 +177,21 @@
 		box-sizing: border-box;
 	}
 
-	.form-button {
+	.form-button,
+	.form-button-del {
 		padding: 0.5rem 1rem;
 		font-size: 1rem;
 		border-radius: 4px;
-		background-color: #007bff;
 		color: #fff;
 		border: none;
 		cursor: pointer;
+	}
+
+	.form-button {
+		background-color: #007bff;
+	}
+	.form-button-del {
+		background-color: #ff0000;
 	}
 
 	.form-group input {

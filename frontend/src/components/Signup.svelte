@@ -1,40 +1,50 @@
 <script>
 	import { supabase } from '$lib/supabaseClient';
-	import { v4 as uuidv4 } from 'uuid';
 	import { goto } from '$app/navigation';
+	import { v4 } from 'uuid';
 
 	let email = '';
 	let password = '';
 	let confirmPassword = '';
-	/**
-	 * @type {HTMLParagraphElement}
-	 */
 	let formMsg;
 	let formMsgText = '';
+	let uuid = v4();
+
 	/**
 	 * @param {{ preventDefault: () => void; }} event
 	 */
 	async function handleSubmit(event) {
 		event.preventDefault();
-		const uuid = uuidv4();
+
+		// Vérification si les mots de passe correspondent
+		if (password !== confirmPassword) {
+			formMsgText = 'Les mots de passe ne correspondent pas.';
+			return;
+		}
 
 		try {
 			await createUser(email, password);
 
+
 			// Enregistrement des données utilisateur dans la base de données
 			const { error: insertError } = await supabase.from('Utilisateurs').insert({
+				// @ts-ignore
 				id: uuid,
 				email: email,
 				cree_le: new Date().toISOString()
 			});
+
 			if (insertError) {
 				console.error(insertError.message);
 			} else {
 				console.log('Utilisateur enregistré !');
+				goto('/main');
 			}
 		} catch (error) {
 			// @ts-ignore
 			console.error(error.message);
+			// @ts-ignore
+			formMsgText = error.message;
 		}
 	}
 
@@ -55,17 +65,13 @@
 		if (error) throw error;
 
 		if (userExists) {
-			/* l'instruction suivante sera affichée seulement dans la console */
-			/* throw new Error('Un utilisateur existe déjà avec cet e-mail') */
-			/* la suivante sera affichée dans la page */
 			formMsgText = 'Utilisateur déjà dans la base de données.';
 			throw new Error(formMsgText);
 		} else {
 			// @ts-ignore
 			const { user, error } = await supabase.auth.signUp({ email, password });
 			if (error) throw error;
-			/* return console.log(email, password); */
-			goto('/main');
+			return user;
 		}
 	}
 </script>
