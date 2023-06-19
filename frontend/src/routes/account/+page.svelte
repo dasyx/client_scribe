@@ -10,6 +10,7 @@
 	let firstName = '';
 	let lastName = '';
 	let id = '';
+	let prenom = '';
 
 	onMount(async () => {
 		try {
@@ -24,7 +25,7 @@
             }
 
 			email = user.email;
-			id = user.id;
+			id = user.uuid;
 
 			console.log(user.email);
 			console.log(user.id);
@@ -73,7 +74,7 @@
 			console.error(error.message);
 		}
 	}
-	async function deleteAccount() {
+	/* async function deleteAccount() {
 		try {
 			const { error } = await supabase.auth.deleteUser('d27ae5d7-b996-4aaa-9cfa-9fb51238dd3c');
 			if (error) throw error;
@@ -81,82 +82,82 @@
 		} catch (error) {
 			alert(error.error_description || error.message);
 		}
-	}
+	} */
 </script>
 
-<!-- Votre formulaire avec la logique de gestion de submit associée -->
-<form on:submit|preventDefault={handleSubmit}>
-	<!-- <div class="form-group">
-		<label class="form-label" for="currentEmail">Adresse email actuelle:</label>
-		<input
-			class="form-input"
-			type="email"
-			id="currentEmail"
-			placeholder="Entrez votre adresse email"
-			bind:value={email}
-		/>
-	</div>
-
-	<div class="form-group">
-		<label class="form-label" for="newEmail">Nouvelle adresse email:</label>
-		<input
-			class="form-input"
-			type="email"
-			id="newEmail"
-			placeholder="Entrez votre adresse email"
-			bind:value={newEmail}
-		/>
-	</div> -->
-
-	<div class="form-group">
-		<label class="form-label" for="newEmail">Adresse email:</label>
-		<input
-			class="form-input"
-			type="email"
-			id="email"
-			placeholder="Entrez votre adresse email"
-			bind:value={email}
-		/>
-	</div>
-
-	<div class="form-group">
-		<label class="form-label" for="password">Mot de passe:</label>
-		<input
-			class="form-input"
-			type="password"
-			id="password"
-			placeholder="Entrez votre mot de passe"
-			bind:value={password}
-		/>
-	</div>
-
-	<div class="form-group">
-		<label class="form-label" for="firstName">Prénom:</label>
-		<input
-			class="form-input"
-			type="text"
-			id="firstName"
-			placeholder="Entrez votre prénom"
-			bind:value={firstName}
-		/>
-	</div>
-
-	<div class="form-group">
-		<label class="form-label" for="lastName">Nom:</label>
-		<input
-			class="form-input"
-			type="text"
-			id="lastName"
-			placeholder="Entrez votre nom"
-			bind:value={lastName}
-		/>
-	</div>
-	<button class="form-button" type="submit">Mettre à jour les informations</button>
-	<button on:click={deleteAccount} class="form-button-del" type="submit">Supprimer le compte</button
-	>
-	<!--message d'alerte selon gestion formulaire-->
-	<!-- <p bind:this={formMsg} id="form-msg">{formMsgText}</p> -->
-</form>
+<main class="main_profile">
+	<form on:submit|preventDefault={handleSubmit} class="form_profile">
+		<!-- <div class="form-group">
+			<label class="form-label" for="currentEmail">Adresse email actuelle:</label>
+			<input
+				class="form-input"
+				type="email"
+				id="currentEmail"
+				placeholder="Entrez votre adresse email"
+				bind:value={email}
+			/>
+		</div>
+	
+		<div class="form-group">
+			<label class="form-label" for="newEmail">Nouvelle adresse email:</label>
+			<input
+				class="form-input"
+				type="email"
+				id="newEmail"
+				placeholder="Entrez votre adresse email"
+				bind:value={newEmail}
+			/>
+		</div> -->
+	
+		<div class="form-group">
+			<label class="form-label" for="newEmail">Adresse email:</label>
+			<input
+				class="form-input"
+				type="email"
+				id="email"
+				placeholder="Entrez votre adresse email"
+				bind:value={email}
+			/>
+		</div>
+	
+		<div class="form-group">
+			<label class="form-label" for="password">Mot de passe:</label>
+			<input
+				class="form-input"
+				type="password"
+				id="password"
+				placeholder="Entrez votre mot de passe"
+				bind:value={password}
+			/>
+		</div>
+	
+		<div class="form-group">
+			<label class="form-label" for="firstName">Prénom:</label>
+			<input
+				class="form-input"
+				type="text"
+				id="firstName"
+				placeholder="Entrez votre prénom"
+				bind:value={firstName}
+			/>
+		</div>
+	
+		<div class="form-group">
+			<label class="form-label" for="lastName">Nom:</label>
+			<input
+				class="form-input"
+				type="text"
+				id="lastName"
+				placeholder="Entrez votre nom"
+				bind:value={lastName}
+			/>
+		</div>
+		<button class="form-button" type="submit">Mettre à jour les informations</button>
+		<!-- <button on:click={deleteAccount} class="form-button-del" type="submit">Supprimer le compte</button> -->
+		<!--message d'alerte selon gestion formulaire-->
+		<!-- <p bind:this={formMsg} id="form-msg">{formMsgText}</p> -->
+	</form>
+</main>
 
 <style>
 	.form-group {
