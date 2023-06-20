@@ -5,7 +5,6 @@
 
 	let email = '';
 	let password = '';
-	let confirmPassword = '';
 	let formMsg;
 	let formMsgText = '';
 	let uuid = v4();
@@ -17,10 +16,10 @@
 		event.preventDefault();
 
 		// Vérification si les mots de passe correspondent
-		if (password !== confirmPassword) {
+		/* if (password !== confirmPassword) {
 			formMsgText = 'Les mots de passe ne correspondent pas.';
 			return;
-		}
+		} */
 
 		try {
 			await createUser(email, password);
@@ -79,6 +78,9 @@
 
 <!-- Votre formulaire avec la logique de gestion de submit associée -->
 <form on:submit|preventDefault={handleSubmit}>
+
+	<fieldset>
+		<legend>Saisissez votre adresse email pour modifier les informations</legend>
 	<div class="form-group">
 		<label class="form-label" for="email">Adresse email:</label>
 		<input
@@ -102,18 +104,8 @@
 			required
 		/>
 	</div>
+	</fieldset>
 
-	<div class="form-group">
-		<label class="form-label" for="confirmPassword">Confirmer le mot de passe:</label>
-		<input
-			class="form-input"
-			type="password"
-			id="confirmPassword"
-			placeholder="Répétez votre mot de passe"
-			bind:value={confirmPassword}
-			required
-		/>
-	</div>
 	<button class="form-button" type="submit">Envoyer</button>
 	<!--message d'alerte selon gestion formulaire-->
 	<p bind:this={formMsg} id="form-msg">{formMsgText}</p>

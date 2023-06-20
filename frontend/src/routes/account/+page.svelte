@@ -19,10 +19,10 @@
 			} = await supabase.auth.getUser();
 
 			if (user) {
-                $userLoggedIn = true;
-            } else {
-                $userLoggedIn = false;
-            }
+				$userLoggedIn = true;
+			} else {
+				$userLoggedIn = false;
+			}
 
 			email = user.email;
 			id = user.uuid;
@@ -85,21 +85,14 @@
 	} */
 </script>
 
-<main class="main_profile">
+<div class="profile_title">
+	<h1>Espace personnel</h1>
+	<p>Vous pouvez modifier vos informations personnelles ici.</p>
+</div>
+
+<main class="profile_main">
 	<form on:submit|preventDefault={handleSubmit} class="form_profile">
-	
-		<div class="form-group">
-			<label class="form-label" for="newEmail">Adresse email:</label>
-			<input
-				class="form-input"
-				type="email"
-				id="email"
-				placeholder="Entrez votre adresse email"
-				bind:value={email}
-			/>
-		</div>
-	
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label class="form-label" for="password">Mot de passe:</label>
 			<input
 				class="form-input"
@@ -108,8 +101,8 @@
 				placeholder="Entrez votre mot de passe"
 				bind:value={password}
 			/>
-		</div>
-	
+		</div> -->
+
 		<div class="form-group">
 			<label class="form-label" for="firstName">Prénom:</label>
 			<input
@@ -120,7 +113,7 @@
 				bind:value={firstName}
 			/>
 		</div>
-	
+
 		<div class="form-group">
 			<label class="form-label" for="lastName">Nom:</label>
 			<input
@@ -139,18 +132,47 @@
 </main>
 
 <style>
+	.profile_title {
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	.profile_title h1 {
+		margin: 0 0 20px;
+
+	}
+
+	.profile_main {
+		justify-content: center;
+		align-items: center;
+		margin-top: 20px;
+		background: linear-gradient(to bottom, #0e2b3b, #193f57, #2a5472, #3b6990, #4d7fb1);
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		margin: 50px 10px;
+		padding: 2.4rem 3rem 3rem 3rem;
+		border: 1px solid black;
+		border-radius: 3px;
+		background-color: #fff;
+		box-shadow: #0e2b3b 0px 0px 10px 0px;
+	}
 
 	.form-group {
+		display: flex;
 		margin-bottom: 1rem;
 	}
 
 	.form-label {
 		font-weight: bold;
 		margin-bottom: 0.5rem;
+		color: #363434;
+		width: 100px;
 	}
 
 	.form-input {
-		width: 280px;
 		padding: 0.5rem;
 		font-size: 1rem;
 		border-radius: 4px;
@@ -159,6 +181,7 @@
 	}
 
 	.form-button {
+		margin-top: 50px;
 		padding: 0.5rem 1rem;
 		font-size: 1rem;
 		border-radius: 4px;
@@ -181,30 +204,36 @@
 		flex-direction: column;
 	}
 
-	@media (min-width: 576px) {
-		/* Small devices (phones) */
-
+	@media (min-width: 567px) {
+		/* Medium devices (tablets) */
+		.profile_title {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-top: 20px;
+		}
+		.profile_title h1 {
+			margin: 0 0 20px 40px;
+			text-align: left;
+		}
+		form {
+			min-width: 50%;
+		}
+		.form-group {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+		}
 		.form-label {
 			margin-bottom: 0;
 			margin-right: 1rem;
+			flex-basis: 100px;
 		}
-
 		.form-input {
 			flex-grow: 1;
-		}
-	}
-
-	@media (min-width: 768px) {
-		/* Medium devices (tablets) */
-		.form-input {
 			width: 400px;
 		}
 	}
 
-	@media (min-width: 992px) {
-		/* Large devices (desktops) */
-		.form-input {
-			width: 400px;
-		}
-	}
 </style>

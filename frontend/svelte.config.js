@@ -6,7 +6,7 @@ const config = {
   preprocess: sveltePreprocess({
     scss: {
       prependData: 
-      `@import 'src/styles/utils.scss';`
+      `@import '../styles/utils.scss';`
     },
     postcss: {
       plugins: [

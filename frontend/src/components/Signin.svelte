@@ -75,6 +75,7 @@
 </form>
 
 <style lang="scss">
+	
 	form {
 		display: flex;
 		flex-direction: column;
@@ -86,7 +87,7 @@
 		margin-top: 100px;
 		padding: 20px;
 		border-radius: 5px;
-		background: utils.$form-gradient, 20%;
+		background: $form-gradient, 20%;
 	}
 
 	.form-title {
