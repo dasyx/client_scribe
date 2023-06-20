@@ -24,6 +24,10 @@
         goto('/account');
     };
 
+    const redirectToDashboard = () => {
+        goto('/dashboard');
+    };
+
     const redirectToMainPage = () => {
         goto('/main');
     };
@@ -53,7 +57,7 @@
         <Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
             {#if $userLoggedIn == true}
             <DropdownItem on:click={redirectToAccount}>Mon compte</DropdownItem>
-            <DropdownItem on:click={redirectToMainPage}>Tableau de bord</DropdownItem>
+            <DropdownItem on:click={redirectToDashboard}>Tableau de bord</DropdownItem>
             {:else}
             <DropdownItem>S'inscrire</DropdownItem>
             {/if}

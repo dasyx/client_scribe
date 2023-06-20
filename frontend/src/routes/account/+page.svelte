@@ -87,27 +87,6 @@
 
 <main class="main_profile">
 	<form on:submit|preventDefault={handleSubmit} class="form_profile">
-		<!-- <div class="form-group">
-			<label class="form-label" for="currentEmail">Adresse email actuelle:</label>
-			<input
-				class="form-input"
-				type="email"
-				id="currentEmail"
-				placeholder="Entrez votre adresse email"
-				bind:value={email}
-			/>
-		</div>
-	
-		<div class="form-group">
-			<label class="form-label" for="newEmail">Nouvelle adresse email:</label>
-			<input
-				class="form-input"
-				type="email"
-				id="newEmail"
-				placeholder="Entrez votre adresse email"
-				bind:value={newEmail}
-			/>
-		</div> -->
 	
 		<div class="form-group">
 			<label class="form-label" for="newEmail">Adresse email:</label>
@@ -160,6 +139,7 @@
 </main>
 
 <style>
+
 	.form-group {
 		margin-bottom: 1rem;
 	}
@@ -178,8 +158,7 @@
 		box-sizing: border-box;
 	}
 
-	.form-button,
-	.form-button-del {
+	.form-button {
 		padding: 0.5rem 1rem;
 		font-size: 1rem;
 		border-radius: 4px;
@@ -190,9 +169,6 @@
 
 	.form-button {
 		background-color: #007bff;
-	}
-	.form-button-del {
-		background-color: #ff0000;
 	}
 
 	.form-group input {

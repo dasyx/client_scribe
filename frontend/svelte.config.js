@@ -1,12 +1,12 @@
-import sveltePreprocess from 'svelte-preprocess';
 import postcssNesting from 'postcss-nesting';
 import adapter from '@sveltejs/adapter-netlify';
+import sveltePreprocess from 'svelte-preprocess';
 
 const config = {
   preprocess: sveltePreprocess({
     scss: {
       prependData: 
-      '@use "../styles/utils.scss";'
+      `@import 'src/styles/utils.scss';`
     },
     postcss: {
       plugins: [

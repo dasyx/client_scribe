@@ -4,6 +4,6 @@
 
 <style lang="scss">
 	.test {
-		color: utils.$test;
+		color: $test;
 	}
 </style>

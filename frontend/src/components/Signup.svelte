@@ -122,7 +122,7 @@
 <style lang="scss">
 
 form {
-	@include utils.form-display;
+	@include form-display;
 		
 }
 
