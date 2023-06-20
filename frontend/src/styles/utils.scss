@@ -1,0 +1,21 @@
+$color: red;
+$test: blue;
+
+$form-gradient : linear-gradient(to bottom,
+    #0E2B3B,
+    #193F57,
+    #2A5472,
+    #3B6990,
+    #4D7FB1);
+
+@mixin form-display {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 1.4rem 2.4rem 2.4rem 3rem;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #193F57;
+    box-shadow: #0E2B3B 0px 0px 10px 0px;
+}

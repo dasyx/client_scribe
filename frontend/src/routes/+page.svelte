@@ -21,6 +21,6 @@
 
 <Banner
 	background={`url(${dawn_bg})`}
-	bannerTitleH2="Veuillez remplir le formulaire ci-dessous."
+	bannerTitleH2="Inscrivez-vous dès maintenant !"
 	height="larger"
 />

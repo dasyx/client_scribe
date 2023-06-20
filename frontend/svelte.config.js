@@ -5,7 +5,8 @@ import adapter from '@sveltejs/adapter-netlify';
 const config = {
   preprocess: sveltePreprocess({
     scss: {
-      prependData: '@use "../styles/variables.scss";',
+      prependData: 
+      '@use "../styles/utils.scss";'
     },
     postcss: {
       plugins: [

@@ -50,6 +50,6 @@
 
 	.banner h2 {
 		text-align: center;
-		margin-bottom: 50px;
+		margin: 50px 0px;
 	}
 </style>

@@ -86,7 +86,7 @@
 		margin-top: 100px;
 		padding: 20px;
 		border-radius: 5px;
-		background: variables.$form-gradient, 20%;
+		background: utils.$form-gradient, 20%;
 	}
 
 	.form-title {

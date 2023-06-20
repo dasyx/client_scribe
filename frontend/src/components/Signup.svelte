@@ -119,69 +119,75 @@
 	<p bind:this={formMsg} id="form-msg">{formMsgText}</p>
 </form>
 
-<style>
-	.form-group {
-		margin-bottom: 1rem;
-	}
+<style lang="scss">
 
-	.form-label {
-		font-weight: bold;
-		margin-bottom: 0.5rem;
-	}
+form {
+	@include utils.form-display;
+		
+}
 
+.form-group {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
+
+.form-label {
+	font-weight: bold;
+	margin-bottom: 0.8rem;
+}
+
+.form-input {
+	width: 100%; /* Changer la largeur en 100% pour qu'elle s'adapte à la taille de son conteneur */
+	font-size: 1rem;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	margin-bottom: 0.8rem;
+}
+
+.form-button {
+	margin-top: 2rem;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	border-radius: 4px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+.form-group input {
+	color: #000;
+}
+
+
+@media (min-width: 576px) {
+	/* Small devices (phones) */
 	.form-input {
-		width: 280px;
-		padding: 0.5rem;
-		font-size: 1rem;
-		border-radius: 4px;
-		border: 1px solid #ccc;
-		box-sizing: border-box;
+		width: 380px;
 	}
+}
 
-	.form-button {
-		padding: 0.5rem 1rem;
-		font-size: 1rem;
-		border-radius: 4px;
-		background-color: #007bff;
-		color: #fff;
-		border: none;
-		cursor: pointer;
+@media (min-width: 768px) {
+	/* Medium devices (tablets) */
+	form {
+		max-width: 600px; /* Définir une largeur maximale pour éviter que le formulaire ne devienne trop large */
+		margin: 0 auto;
 	}
-
-	.form-group input {
-		color: #000;
+	.form-input {
+		width: 400px;
 	}
+}
 
-	/* Flexbox styles */
-	.form-group {
-		display: flex;
-		flex-direction: column;
+@media (min-width: 992px) {
+	/* Large devices (desktops) */
+	form {
+		max-width: 800px; /* Définir une largeur maximale pour éviter que le formulaire ne devienne trop large */
+		margin: 0 auto;
 	}
-
-	@media (min-width: 576px) {
-		/* Small devices (phones) */
-
-		.form-label {
-			margin-bottom: 0;
-			margin-right: 1rem;
-		}
-
-		.form-input {
-			flex-grow: 1;
-		}
+	.form-input {
+		width: 400px;
 	}
-
-	@media (min-width: 768px) {
-		/* Medium devices (tablets) */
-		.form-input {
-			width: 400px;
-		}
-	}
-
-	@media (min-width: 992px) {
-		/* Large devices (desktops) */
-		.form-input {
-			width: 400px;
-		}
-	}
+}
 </style>
