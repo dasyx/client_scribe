@@ -79,8 +79,6 @@
 <!-- Votre formulaire avec la logique de gestion de submit associée -->
 <form on:submit|preventDefault={handleSubmit}>
 
-	<fieldset>
-		<legend>Saisissez votre adresse email pour modifier les informations</legend>
 	<div class="form-group">
 		<label class="form-label" for="email">Adresse email:</label>
 		<input
@@ -104,7 +102,6 @@
 			required
 		/>
 	</div>
-	</fieldset>
 
 	<button class="form-button" type="submit">Envoyer</button>
 	<!--message d'alerte selon gestion formulaire-->
