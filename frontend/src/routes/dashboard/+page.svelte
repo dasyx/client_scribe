@@ -8,6 +8,6 @@
 	<h2>{message}</h2>
 </main>
 
-<style lang="scss">
+<style>
 	
 </style>
