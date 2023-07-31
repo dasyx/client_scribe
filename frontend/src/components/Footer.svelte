@@ -59,7 +59,7 @@
 
 <style lang="scss">
 	footer {
-		position: absolute;
+		position: fixed;
 		bottom: 0;
 		background-color: #fff;
 		width: 100%;
