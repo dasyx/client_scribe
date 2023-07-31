@@ -66,8 +66,15 @@
 
 {#if $userLoggedIn}
 	<div class="connected-msg">
-		<p id="prenom-utilisateur" />
-		<p>Votre adresse email est : {email}</p>
+		<div class="chat chat-start">
+			<div class="chat-image avatar">
+				<div class="w-10 rounded-full">
+					<img src="https://cdn.icon-icons.com/icons2/1371/PNG/512/robot02_90810.png" alt="Icone de robot pour avatar"/>
+				</div>
+			</div>
+			<div class="chat-bubble" id="prenom-utilisateur" />
+		</div>
+		<!-- <p>Votre adresse email est : {email}</p> -->
 	</div>
 {:else}
 	<div class="non-connected-msg">
@@ -79,8 +86,11 @@
 {/if}
 
 <style>
-    .non-connected-msg a {
-        color: blue;
-        cursor: pointer;
-    }
+	.connected-msg {
+		padding: 20px;
+	}
+	.non-connected-msg a {
+		color: blue;
+		cursor: pointer;
+	}
 </style>

@@ -35,7 +35,7 @@
 		&.small-height {
 			min-height: 200px;
 		}
-		&.hight-height {
+		&.high-height {
 			min-height: 500px;
 		}
 	}

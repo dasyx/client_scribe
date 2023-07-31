@@ -1,5 +1,8 @@
 $color: red;
-$test: blue;
+
+$color-bg-0 : rgb(202, 216, 228);
+$color-bg-1 : hsl(209, 36%, 86%);
+$color-bg-2 : hsl(224, 44%, 95%);
 
 $form-gradient : linear-gradient(to bottom,
     #0E2B3B,
@@ -8,11 +11,16 @@ $form-gradient : linear-gradient(to bottom,
     #3B6990,
     #4D7FB1);
 
+$body-gradient : radial-gradient(50% 50% at 50% 50%,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0) 100%),
+linear-gradient(180deg, darken($color-bg-0, 10%) 0%, darken($color-bg-1, 10%) 15%, darken($color-bg-2, 10%) 50%);
+
+
 @mixin form-display {
     display: flex;
     flex-direction: column;
     min-width: 300px;
-    margin: 0 auto;
     padding: 1.4rem 2.4rem 2.4rem 3rem;
     border: 1px solid black;
     border-radius: 3px;

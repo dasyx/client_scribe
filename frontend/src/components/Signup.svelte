@@ -112,7 +112,7 @@
 
 form {
 	@include form-display;
-		
+	margin-bottom: 50px;
 }
 
 .form-group {
@@ -162,7 +162,6 @@ form {
 	/* Medium devices (tablets) */
 	form {
 		max-width: 600px; /* Définir une largeur maximale pour éviter que le formulaire ne devienne trop large */
-		margin: 0 auto;
 	}
 	.form-input {
 		width: 400px;
@@ -173,7 +172,6 @@ form {
 	/* Large devices (desktops) */
 	form {
 		max-width: 800px; /* Définir une largeur maximale pour éviter que le formulaire ne devienne trop large */
-		margin: 0 auto;
 	}
 	.form-input {
 		width: 400px;
