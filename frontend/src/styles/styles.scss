@@ -23,6 +23,7 @@
 }
 
 body {
+	position: relative;
 	min-height: 100vh;
 	margin: 0;
 	background-attachment: fixed;
@@ -98,18 +99,18 @@ main {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	min-height: 100vh;
 	margin: 0 auto;
 	margin-top: 60px;
 }
 
 footer {
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 12px;
-	margin-top: 50px;
-	position: fixed;
 	background-color: #fff;
 	width: 100%;
 	bottom: 0;
