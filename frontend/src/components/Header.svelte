@@ -43,31 +43,42 @@
     }
 </script>
 
+<header>
+    <Navbar let:hidden let:toggle>
+        <NavBrand href="/">
+            <div style:width="30px">
+                <IoMdHome />
+            </div>
+            <span class="whitespace-nowrap text-xl font-semibold dark:text-white pl-4 pt-1"> Scribe </span>
+        </NavBrand>
+        <NavHamburger on:click={toggle} />
+        <NavUl {hidden}>
+            <NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Navigation</Chevron></NavLi>
+            <Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
+                {#if $userLoggedIn == true}
+                <DropdownItem on:click={redirectToAccount}>Mon compte</DropdownItem>
+                <DropdownItem on:click={redirectToDashboard}>Tableau de bord</DropdownItem>
+                {:else}
+                <DropdownItem>S'inscrire</DropdownItem>
+                {/if}
+                <DropdownItem>Paramètres</DropdownItem>
+                <DropdownDivider />
+                {#if $userLoggedIn == true}
+                    <DropdownItem on:click={handleSignOut}>Se déconnecter</DropdownItem>
+                {:else}
+                    <DropdownItem on:click={redirectToSigninPage}>Se connecter</DropdownItem>
+                {/if}
+            </Dropdown>
+        </NavUl>
+    </Navbar>
+</header>
 
-<Navbar let:hidden let:toggle>
-    <NavBrand href="/">
-        <div style:width="30px">
-            <IoMdHome />
-        </div>
-        <span class="whitespace-nowrap text-xl font-semibold dark:text-white pl-4 pt-1"> Scribe </span>
-    </NavBrand>
-    <NavHamburger on:click={toggle} />
-    <NavUl {hidden}>
-        <NavLi id="nav-menu1" class="cursor-pointer"><Chevron aligned>Navigation</Chevron></NavLi>
-        <Dropdown triggeredBy="#nav-menu1" class="w-44 z-20">
-            {#if $userLoggedIn == true}
-            <DropdownItem on:click={redirectToAccount}>Mon compte</DropdownItem>
-            <DropdownItem on:click={redirectToDashboard}>Tableau de bord</DropdownItem>
-            {:else}
-            <DropdownItem>S'inscrire</DropdownItem>
-            {/if}
-            <DropdownItem>Paramètres</DropdownItem>
-            <DropdownDivider />
-            {#if $userLoggedIn == true}
-                <DropdownItem on:click={handleSignOut}>Se déconnecter</DropdownItem>
-            {:else}
-                <DropdownItem on:click={redirectToSigninPage}>Se connecter</DropdownItem>
-            {/if}
-        </Dropdown>
-    </NavUl>
-</Navbar>
+<style>
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+    }
+</style>

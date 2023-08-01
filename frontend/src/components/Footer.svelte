@@ -59,11 +59,9 @@
 
 <style lang="scss">
 	footer {
-		position: fixed;
+		position: static;
 		background-color: #fff;
 		width: 100%;
-		bottom: 0;
-		left: 0;
 	}
 	footer div {
 		padding: 10px 0;

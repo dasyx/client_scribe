@@ -14,3 +14,9 @@
 
 	<Footer />
 </div>
+
+<style>
+	main {
+		margin-top: 60px;
+	}
+</style>

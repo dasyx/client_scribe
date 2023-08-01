@@ -3,13 +3,13 @@
 	export let background = 'url(chemin_vers_l_image)';
 	export let bannerTitleH1 = '';
 	export let bannerTitleH2 = '';
-	export let height = 'smaller';
+	export let height = '';
 </script>
 
 <section
 	class="banner"
 	class:small-height={height == 'smaller'}
-	class:hight-height={height == 'larger'}
+	class:high-height={height == 'larger'}
 	style="--background: {background}"
 >
 	{#if bannerTitleH1}
@@ -33,10 +33,10 @@
 		color: #fff;
 		overflow: hidden;
 		&.small-height {
-			min-height: 200px;
+			min-height: 20vh;
 		}
 		&.high-height {
-			min-height: 500px;
+			min-height: 50vh;
 		}
 	}
 
