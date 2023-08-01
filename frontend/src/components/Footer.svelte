@@ -1,13 +1,11 @@
 <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
 	<div class="grid grid-flow-col gap-4">
 		<!-- svelte-ignore a11y-missing-attribute -->
-		<a class="link link-hover">About us</a>
+		<a class="link link-hover">A propos</a>
 		<!-- svelte-ignore a11y-missing-attribute -->
 		<a class="link link-hover">Contact</a>
 		<!-- svelte-ignore a11y-missing-attribute -->
-		<a class="link link-hover">Jobs</a>
-		<!-- svelte-ignore a11y-missing-attribute -->
-		<a class="link link-hover">Press kit</a>
+		<a class="link link-hover">Légales</a>
 	</div>
 	<div>
 		<div class="grid grid-flow-col gap-4">
@@ -53,16 +51,11 @@
 		</div>
 	</div>
 	<div>
-		<p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+		<p>Copyright © 2023 - All right reserved by Scribe</p>
 	</div>
 </footer>
 
 <style lang="scss">
-	footer {
-		position: static;
-		background-color: #fff;
-		width: 100%;
-	}
 	footer div {
 		padding: 10px 0;
 		text-align: center;

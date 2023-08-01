@@ -112,7 +112,8 @@
 
 form {
 	@include form-display;
-	margin-bottom: 50px;
+	margin-bottom: 200px;
+	margin-top: 30px;
 }
 
 .form-group {

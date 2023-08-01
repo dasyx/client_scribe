@@ -36,7 +36,7 @@
 			min-height: 20vh;
 		}
 		&.high-height {
-			min-height: 50vh;
+			min-height: 30vh;
 		}
 	}
 
